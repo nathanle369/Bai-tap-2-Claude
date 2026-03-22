@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Co-work Mastery — Biến AI Thành Nhân Viên 24/7 Của Bạn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════
+   ROOT & RESET
+════════════════════════════════════════ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+:root {
+  --night:   #080810;
+  --deep:    #0e0e1a;
+  --card:    #13131f;
+  --surface: #1a1a2a;
+  --line:    rgba(255,255,255,0.07);
+  --muted:   rgba(255,255,255,0.35);
+  --body:    rgba(255,255,255,0.72);
+  --white:   #ffffff;
+
+  --flame:   #e8512a;
+  --flame2:  #ff7347;
+  --gold:    #d4a843;
+  --gold2:   #f0c866;
+  --teal:    #2ab8a8;
+  --sky:     #4a9eff;
+
+  --grad-flame: linear-gradient(135deg, #e8512a 0%, #ff7347 100%);
+  --grad-gold:  linear-gradient(135deg, #d4a843 0%, #f0c866 100%);
+  --grad-hero:  radial-gradient(ellipse 80% 60% at 60% 30%, rgba(232,81,42,0.15) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 70% at 10% 80%, rgba(212,168,67,0.08) 0%, transparent 55%);
+
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+
+  --shadow-flame: 0 0 40px rgba(232,81,42,0.25);
+  --shadow-gold:  0 0 40px rgba(212,168,67,0.2);
+  --shadow-card:  0 20px 80px rgba(0,0,0,0.5);
+}
+
+body {
+  background: var(--night);
+  color: var(--body);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ════════════════════════════════════════
+   STICKY TOP BAR
+════════════════════════════════════════ */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  background: rgba(8,8,16,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line);
+  padding: 12px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s;
+}
+
+.topbar-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+
+.topbar-logo span { color: var(--flame); }
+
+.topbar-cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.topbar-price {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--gold);
+}
+
+.btn-topbar {
+  background: var(--grad-flame);
+  color: #fff;
+  padding: 9px 22px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.btn-topbar:hover { opacity: 0.9; transform: scale(1.02); }
+
+/* ════════════════════════════════════════
+   SECTION UTILITY
+════════════════════════════════════════ */
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.wrap-narrow {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+section { position: relative; }
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 15px;
+  border-radius: 100px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.tag-flame {
+  background: rgba(232,81,42,0.12);
+  border: 1px solid rgba(232,81,42,0.3);
+  color: var(--flame2);
+}
+
+.tag-gold {
+  background: rgba(212,168,67,0.1);
+  border: 1px solid rgba(212,168,67,0.3);
+  color: var(--gold2);
+}
+
+.tag-teal {
+  background: rgba(42,184,168,0.1);
+  border: 1px solid rgba(42,184,168,0.3);
+  color: var(--teal);
+}
+
+.tag-sky {
+  background: rgba(74,158,255,0.1);
+  border: 1px solid rgba(74,158,255,0.3);
+  color: var(--sky);
+}
+
+/* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--grad-hero);
+  pointer-events: none;
+}
+
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.eyebrow-line {
+  width: 32px;
+  height: 1px;
+  background: var(--flame);
+}
+
+.eyebrow-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--flame2);
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 5.5vw, 72px);
+  font-weight: 700;
+  line-height: 1.06;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.hero h1 .accent {
+  color: var(--flame);
+  font-style: italic;
+}
+
+.hero h1 .accent-gold {
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--body);
+  margin: 24px 0 40px;
+  line-height: 1.75;
+  max-width: 480px;
+}
+
+.hero-sub strong { color: var(--white); font-weight: 600; }
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--grad-flame);
+  color: #fff;
+  padding: 18px 36px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: var(--shadow-flame);
+  letter-spacing: 0.3px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 60px rgba(232,81,42,0.4);
+}
+
+.btn-primary .arrow { transition: transform 0.2s; }
+.btn-primary:hover .arrow { transform: translateX(4px); }
+
+.hero-guarantee {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.hero-guarantee::before {
+  content: '🛡️';
+  font-size: 16px;
+}
+
+/* Hero visual */
+.hero-visual {
+  position: relative;
+}
+
+.hero-mockup {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  position: relative;
+}
+
+.mockup-bar {
+  background: var(--surface);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-r { background: #ff5f57; }
+.dot-y { background: #ffbd2e; }
+.dot-g { background: #28ca41; }
+
+.mockup-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: 8px;
+}
+
+.mockup-body {
+  padding: 24px;
+}
+
+.mockup-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.mockup-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.avatar-bot { background: rgba(232,81,42,0.2); border: 1px solid rgba(232,81,42,0.3); }
+.avatar-user { background: var(--surface); border: 1px solid var(--line); }
+
+.mockup-bubble {
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--body);
+  max-width: calc(100% - 44px);
+}
+
+.bubble-bot {
+  background: rgba(232,81,42,0.08);
+  border: 1px solid rgba(232,81,42,0.15);
+}
+
+.bubble-user {
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.mockup-highlight {
+  color: var(--flame2);
+  font-weight: 600;
+}
+
+.typing-dots {
+  display: flex;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+.typing-dots span {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--flame);
+  animation: typing 1.4s infinite;
+}
+
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing { 0%,60%,100%{opacity:0.2} 30%{opacity:1} }
+
+.hero-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.hero-stat {
+  background: var(--card);
+  padding: 16px;
+  text-align: center;
+}
+
+.hero-stat-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold2);
+  line-height: 1;
+}
+
+.hero-stat-l {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+/* ════════════════════════════════════════
+   SOCIAL PROOF BAR
+════════════════════════════════════════ */
+.proof-bar {
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+  position: relative;
+}
+
+.proof-track {
+  display: flex;
+  gap: 48px;
+  animation: scroll-x 30s linear infinite;
+  width: max-content;
+}
+
+.proof-track:hover { animation-play-state: paused; }
+
+.proof-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.proof-item strong { color: var(--white); font-weight: 600; }
+.proof-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--flame); flex-shrink: 0; }
+
+@keyframes scroll-x { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ════════════════════════════════════════
+   PROBLEM SECTION
+════════════════════════════════════════ */
+.problem {
+  padding: 100px 0;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 56px;
+}
+
+.problem-list { display: flex; flex-direction: column; gap: 20px; }
+
+.problem-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  transition: border-color 0.2s;
+}
+
+.problem-item:hover { border-color: rgba(232,81,42,0.3); }
+
+.problem-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: rgba(232,81,42,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.problem-text h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.problem-text p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.problem-visual {
+  position: relative;
+}
+
+.loss-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+}
+
+.loss-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.loss-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+
+.loss-row:last-of-type { border-bottom: none; }
+.loss-label { color: var(--muted); }
+.loss-val { font-family: 'DM Mono', monospace; font-weight: 500; }
+.loss-val.red { color: #ff6b6b; }
+.loss-val.green { color: #4ecb71; }
+
+.loss-total {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: rgba(232,81,42,0.08);
+  border: 1px solid rgba(232,81,42,0.2);
+  border-radius: var(--r-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loss-total-label { font-size: 13px; color: var(--body); }
+.loss-total-num { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--flame); }
+
+/* ════════════════════════════════════════
+   SECTION HEADINGS
+════════════════════════════════════════ */
+.sec-head { text-align: center; margin-bottom: 64px; }
+.sec-head .tag-pill { margin-bottom: 20px; }
+
+.sec-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.12;
+  margin-bottom: 18px;
+}
+
+.sec-head h2 em { font-style: italic; color: var(--flame); }
+.sec-head h2 .g { background: var(--grad-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.sec-head p {
+  font-size: 17px;
+  color: var(--body);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* ════════════════════════════════════════
+   WHAT YOU GET
+════════════════════════════════════════ */
+.features { padding: 100px 0; background: var(--deep); }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.feat-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  cursor: default;
+}
+
+.feat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.feat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card);
+}
+
+.feat-card:nth-child(1)::before { background: var(--grad-flame); }
+.feat-card:nth-child(2)::before { background: var(--grad-gold); }
+.feat-card:nth-child(3)::before { background: linear-gradient(135deg, var(--teal), #50e3c2); }
+.feat-card:nth-child(4)::before { background: linear-gradient(135deg, var(--sky), #7eb8ff); }
+.feat-card:nth-child(5)::before { background: linear-gradient(135deg, #a78bfa, #c084fc); }
+.feat-card:nth-child(6)::before { background: linear-gradient(135deg, #fb7185, #f43f5e); }
+
+.feat-card:hover::before { opacity: 1; }
+.feat-card:nth-child(1):hover { border-color: rgba(232,81,42,0.3); }
+.feat-card:nth-child(2):hover { border-color: rgba(212,168,67,0.3); }
+.feat-card:nth-child(3):hover { border-color: rgba(42,184,168,0.3); }
+.feat-card:nth-child(4):hover { border-color: rgba(74,158,255,0.3); }
+.feat-card:nth-child(5):hover { border-color: rgba(167,139,250,0.3); }
+.feat-card:nth-child(6):hover { border-color: rgba(251,113,133,0.3); }
+
+.feat-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.feat-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+
+.feat-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.feat-card p {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.feat-tag {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: var(--surface);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+
+/* ════════════════════════════════════════
+   SKILLS SHOWCASE
+════════════════════════════════════════ */
+.skills-sec { padding: 100px 0; }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  margin-top: 64px;
+}
+
+.skill-row {
+  background: var(--card);
+  padding: 28px 32px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  transition: background 0.2s;
+  cursor: default;
+}
+
+.skill-row:hover { background: var(--surface); }
+
+.skill-num-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--line);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 36px;
+  transition: color 0.2s;
+}
+
+.skill-row:hover .skill-num-big { color: var(--flame); }
+
+.skill-body h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.skill-body p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.skill-keyword {
+  margin-top: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--flame);
+  background: rgba(232,81,42,0.08);
+  border: 1px solid rgba(232,81,42,0.2);
+  padding: 2px 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* ════════════════════════════════════════
+   TRANSFORMATION SECTION
+════════════════════════════════════════ */
+.transform { padding: 100px 0; background: var(--deep); }
+
+.transform-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  margin-top: 64px;
+}
+
+.before-col { background: var(--card); padding: 48px 40px; border-radius: var(--r-lg) 0 0 var(--r-lg); }
+.after-col { background: var(--flame); padding: 48px 40px; border-radius: 0 var(--r-lg) var(--r-lg) 0; position: relative; overflow: hidden; }
+
+.after-col::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(255,255,255,0.12), transparent 60%);
+}
+
+.col-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.before-col .col-label { color: var(--muted); }
+.after-col .col-label { color: rgba(255,255,255,0.8); }
+
+.col-label::before {
+  content: '';
+  width: 20px; height: 1px;
+}
+
+.before-col .col-label::before { background: var(--muted); }
+.after-col .col-label::before { background: rgba(255,255,255,0.6); }
+
+.transform-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.t-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+.transform-item h5 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.before-col .transform-item h5 { color: var(--body); }
+.after-col .transform-item h5 { color: #fff; }
+
+.transform-item p { font-size: 12.5px; }
+.before-col .transform-item p { color: var(--muted); }
+.after-col .transform-item p { color: rgba(255,255,255,0.75); }
+
+/* ════════════════════════════════════════
+   TESTIMONIALS
+════════════════════════════════════════ */
+.testimonials { padding: 100px 0; }
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 64px;
+}
+
+.testi-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.testi-card:hover { border-color: rgba(212,168,67,0.3); transform: translateY(-4px); }
+
+.testi-stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; }
+
+.testi-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--body);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.author-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.author-role { font-size: 11px; color: var(--muted); }
+
+/* ════════════════════════════════════════
+   PRICING
+════════════════════════════════════════ */
+.pricing { padding: 100px 0; background: var(--deep); }
+
+.pricing-cards {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-top: 64px;
+}
+
+.pricing-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  padding: 36px 32px;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.pricing-card:hover { transform: translateY(-4px); }
+
+.pricing-card.featured {
+  background: var(--surface);
+  border-color: rgba(232,81,42,0.4);
+  box-shadow: 0 0 0 1px rgba(232,81,42,0.15), var(--shadow-flame);
+}
+
+.featured-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--grad-flame);
+  color: #fff;
+  padding: 4px 20px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.plan-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.plan-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.plan-price sup { font-size: 24px; vertical-align: super; }
+.plan-price .period { font-size: 16px; font-weight: 300; color: var(--muted); }
+
+.plan-orig {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: line-through;
+  margin-bottom: 8px;
+}
+
+.plan-save {
+  display: inline-block;
+  background: rgba(78,203,113,0.12);
+  border: 1px solid rgba(78,203,113,0.25);
+  color: #4ecb71;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.plan-divider { height: 1px; background: var(--line); margin: 20px 0; }
+
+.plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--body);
+  line-height: 1.55;
+}
+
+.plan-features li::before { content: '✓'; color: #4ecb71; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.plan-features li.muted::before { content: '–'; color: var(--muted); }
+.plan-features li.muted { color: var(--muted); }
+
+.btn-plan {
+  display: block;
+  text-align: center;
+  padding: 15px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s;
+  letter-spacing: 0.3px;
+}
+
+.btn-plan-outline {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--body);
+}
+
+.btn-plan-outline:hover { border-color: rgba(255,255,255,0.3); color: var(--white); }
+
+.btn-plan-primary {
+  background: var(--grad-flame);
+  color: #fff;
+  box-shadow: var(--shadow-flame);
+}
+
+.btn-plan-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 50px rgba(232,81,42,0.4);
+}
+
+/* ════════════════════════════════════════
+   FAQ
+════════════════════════════════════════ */
+.faq { padding: 100px 0; }
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 64px;
+}
+
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 24px 28px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.faq-item:hover { border-color: rgba(232,81,42,0.25); }
+
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.faq-q-text {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.4;
+}
+
+.faq-chevron {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: transform 0.3s, background 0.2s;
+}
+
+.faq-item.open .faq-chevron {
+  transform: rotate(180deg);
+  background: rgba(232,81,42,0.15);
+  color: var(--flame2);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, margin-top 0.2s;
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.faq-item.open .faq-a {
+  max-height: 300px;
+  margin-top: 14px;
+}
+
+/* ════════════════════════════════════════
+   GUARANTEE
+════════════════════════════════════════ */
+.guarantee-sec {
+  padding: 80px 0;
+  background: var(--deep);
+}
+
+.guarantee-inner {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 48px 56px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.guarantee-badge {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: conic-gradient(var(--gold) 0deg 270deg, var(--flame) 270deg 360deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.guarantee-badge::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: var(--card);
+}
+
+.guarantee-badge span { position: relative; font-size: 40px; }
+
+.guarantee-body h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.guarantee-body p {
+  font-size: 14px;
+  color: var(--body);
+  line-height: 1.75;
+}
+
+/* ════════════════════════════════════════
+   FINAL CTA
+════════════════════════════════════════ */
+.final-cta {
+  padding: 120px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 100%, rgba(232,81,42,0.2) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(212,168,67,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.final-cta-inner { position: relative; }
+
+.final-h {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  margin: 24px 0;
+}
+
+.final-h em { font-style: italic; color: var(--flame); }
+.final-h .g { background: var(--grad-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.final-sub {
+  font-size: 17px;
+  color: var(--body);
+  max-width: 520px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+}
+
+.final-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-final {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--grad-flame);
+  color: #fff;
+  padding: 22px 48px;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 60px rgba(232,81,42,0.4);
+  transition: all 0.25s;
+  letter-spacing: 0.3px;
+}
+
+.btn-final:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 90px rgba(232,81,42,0.5);
+}
+
+.final-note { font-size: 13px; color: var(--muted); }
+
+.countdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 32px 0;
+}
+
+.countdown-box {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 12px 20px;
+  text-align: center;
+  min-width: 68px;
+}
+
+.countdown-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--flame2);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.countdown-sep {
+  font-family: 'DM Mono', monospace;
+  font-size: 24px;
+  color: var(--flame);
+  line-height: 1;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+footer {
+  padding: 40px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.footer-logo span { color: var(--flame); }
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--white); }
+
+/* ════════════════════════════════════════
+   SCROLL ANIMATIONS
+════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ════════════════════════════════════════
+   PROGRESS SCROLL
+════════════════════════════════════════ */
+#progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--grad-flame);
+  z-index: 1000;
+  transition: width 0.1s;
+}
+
+/* ════════════════════════════════════════
+   MOBILE RESPONSIVE
+════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .topbar { padding: 12px 20px; }
+  .topbar-price { display: none; }
+
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
+  .hero { padding: 100px 0 60px; }
+  .hero-visual { display: none; }
+  .hero h1 { font-size: 40px; }
+  .hero-sub { font-size: 16px; }
+
+  .wrap, .wrap-narrow { padding: 0 20px; }
+
+  .problem-grid { grid-template-columns: 1fr; gap: 40px; }
+  .problem-visual { display: none; }
+
+  .features-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .transform-grid { grid-template-columns: 1fr; gap: 2px; }
+  .before-col { border-radius: var(--r-lg) var(--r-lg) 0 0; }
+  .after-col { border-radius: 0 0 var(--r-lg) var(--r-lg); }
+
+  .testi-grid { grid-template-columns: 1fr; }
+  .pricing-cards { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+
+  .guarantee-inner { flex-direction: column; text-align: center; padding: 32px 24px; }
+
+  .countdown-row { gap: 10px; }
+  .countdown-box { min-width: 52px; padding: 10px 12px; }
+  .countdown-num { font-size: 22px; }
+
+  .btn-final { font-size: 16px; padding: 18px 32px; }
+
+  .sec-head h2 { font-size: 28px; }
+  section { padding: 60px 0 !important; }
+
+  footer { flex-direction: column; align-items: flex-start; padding: 28px 20px; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 34px; }
+  .hero-sub { font-size: 15px; }
+  .btn-primary { font-size: 14px; padding: 16px 28px; }
+  .hero-stats-row { grid-template-columns: repeat(3, 1fr); }
+  .hero-stat-n { font-size: 22px; }
+
+  .topbar-logo { font-size: 15px; }
+  .btn-topbar { padding: 8px 16px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<!-- ══ TOP BAR ══ -->
+<header class="topbar" id="topbar">
+  <div class="topbar-logo">Claude <span>Co-work</span> Mastery</div>
+  <div class="topbar-cta">
+    <span class="topbar-price">🔥 Ưu đãi kết thúc hôm nay</span>
+    <a href="https://bai-tap-2-claude.vercel.app/?plan=pro" class="btn-topbar">Mua Ngay →</a>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Hướng Dẫn Toàn Diện · 2025</span>
+      </div>
+      <h1>
+        Biến Claude<br>Thành <span class="accent">Nhân Viên</span><br><span class="accent-gold">AI 24/7</span>
+      </h1>
+      <p class="hero-sub">
+        90% người dùng Claude chỉ đang khai thác <strong>10% sức mạnh</strong> thực sự. eBook này trao cho bạn hệ thống hoàn chỉnh để Claude tự động làm việc — ngay cả khi bạn đang ngủ.
+      </p>
+      <div class="hero-actions">
+        <a href="https://bai-tap-2-claude.vercel.app/?plan=pro" class="btn-primary">
+          Tải eBook Ngay — Chỉ 299.000₫
+          <span class="arrow">→</span>
+        </a>
+        <div class="hero-guarantee">
+          Bảo đảm hoàn tiền 30 ngày nếu không hài lòng
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <div class="hero-mockup">
+        <div class="mockup-bar">
+          <span class="dot dot-r"></span>
+          <span class="dot dot-y"></span>
+          <span class="dot dot-g"></span>
+          <span class="mockup-title">Claude Co-work — Dự án: Marketing</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-row">
+            <div class="mockup-avatar avatar-user">👤</div>
+            <div class="mockup-bubble bubble-user">morning briefing</div>
+          </div>
+          <div class="mockup-row">
+            <div class="mockup-avatar avatar-bot">🤖</div>
+            <div class="mockup-bubble bubble-bot">
+              ☀️ <span class="mockup-highlight">Chào buổi sáng!</span> Đây là tóm tắt ngày của bạn:<br><br>
+              📅 <strong>3 cuộc họp</strong> hôm nay (10:00, 14:00, 16:30)<br>
+              📧 <strong>7 email khẩn</strong> chờ phản hồi<br>
+              🎯 Ưu tiên số 1: Hoàn thiện deck Q2...
+            </div>
+          </div>
+          <div class="mockup-row">
+            <div class="mockup-avatar avatar-user">👤</div>
+            <div class="mockup-bubble bubble-user">research assistant Claude Skills 2.0</div>
+          </div>
+          <div class="mockup-row">
+            <div class="mockup-avatar avatar-bot">🤖</div>
+            <div class="mockup-bubble bubble-bot">
+              <div class="typing-dots"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-stats-row">
+        <div class="hero-stat">
+          <div class="hero-stat-n">4</div>
+          <div class="hero-stat-l">Siêu năng lực</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-n">7</div>
+          <div class="hero-stat-l">Skills thiết yếu</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-n">24/7</div>
+          <div class="hero-stat-l">Tự động hóa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOCIAL PROOF BAR ══ -->
+<div class="proof-bar">
+  <div class="proof-track" id="proofTrack">
+    <div class="proof-item"><span class="proof-dot"></span><strong>Minh Tuấn</strong> — "Tiết kiệm 3 giờ mỗi ngày"</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Lan Anh</strong> — "Morning brief tự động thay đổi hoàn toàn buổi sáng của tôi"</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Thành Đạt</strong> — "Từ 10% lên 90% chỉ sau 1 tuần"</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Ngọc Hà</strong> — "Scheduled tasks chạy lúc 7am, tôi thức dậy đã có tất cả"</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Hùng Việt</strong> — "Skill deck generator thay thế hoàn toàn Canva với tôi"</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Mai Linh</strong> — "Co-work + Zapier MCP kết nối được tất cả apps tôi cần"</div>
+    <!-- duplicate for seamless loop -->
+    <div class="proof-item"><span class="proof-dot"></span><strong>Minh Tuấn</strong> — "Tiết kiệm 3 giờ mỗi ngày"</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Lan Anh</strong> — "Morning brief tự động thay đổi hoàn toàn buổi sáng của tôi"</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Thành Đạt</strong> — "Từ 10% lên 90% chỉ sau 1 tuần"</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Ngọc Hà</strong> — "Scheduled tasks chạy lúc 7am, tôi thức dậy đã có tất cả"</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Hùng Việt</strong> — "Skill deck generator thay thế hoàn toàn Canva với tôi"</div>
+    <div class="proof-item"><span class="proof-dot"></span><strong>Mai Linh</strong> — "Co-work + Zapier MCP kết nối được tất cả apps tôi cần"</div>
+  </div>
+</div>
+
+<!-- ══ PROBLEM ══ -->
+<section class="problem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag-pill tag-flame">Vấn đề</div>
+      <h2>Bạn Đang Lãng Phí<br><em>90% Sức Mạnh Claude</em></h2>
+      <p>Mỗi ngày bạn mở Claude, gõ câu hỏi, đóng ứng dụng rồi lặp lại từ đầu vào ngày hôm sau. Đó không phải cách sử dụng AI — đó là cách lãng phí AI.</p>
+    </div>
+
+    <div class="problem-grid">
+      <div class="problem-list">
+        <div class="problem-item reveal reveal-delay-1">
+          <div class="problem-icon">🔁</div>
+          <div class="problem-text">
+            <h4>Giải thích lại mọi thứ mỗi ngày</h4>
+            <p>Claude không nhớ bạn là ai, doanh nghiệp bạn làm gì, hay phong cách bạn muốn. Mỗi phiên là một tờ giấy trắng.</p>
+          </div>
+        </div>
+        <div class="problem-item reveal reveal-delay-2">
+          <div class="problem-icon">📋</div>
+          <div class="problem-text">
+            <h4>Prompt dài, kết quả ngắn</h4>
+            <p>Bạn viết prompt cả đoạn nhưng Claude vẫn cho ra kết quả generic không đúng ý. Vì thiếu hệ thống — không phải vì Claude kém.</p>
+          </div>
+        </div>
+        <div class="problem-item reveal reveal-delay-3">
+          <div class="problem-icon">🏝️</div>
+          <div class="problem-text">
+            <h4>Apps sống trong các đảo riêng biệt</h4>
+            <p>Email ở một chỗ, lịch một chỗ, Slack một chỗ. Claude không thể đọc chúng — bạn phải copy-paste thủ công mãi mãi.</p>
+          </div>
+        </div>
+        <div class="problem-item reveal reveal-delay-4">
+          <div class="problem-icon">🌙</div>
+          <div class="problem-text">
+            <h4>Claude chỉ làm việc khi bạn ngồi đó</h4>
+            <p>Không có bạn = không có gì được làm. Trong khi đó, đối thủ đã tự động hóa quy trình và đang chạy 24/7.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-visual reveal">
+        <div class="loss-card">
+          <div class="loss-title">💸 Bạn đang lãng phí mỗi tuần</div>
+          <div class="loss-row">
+            <span class="loss-label">Thời gian giải thích lại cho Claude</span>
+            <span class="loss-val red">~45 phút</span>
+          </div>
+          <div class="loss-row">
+            <span class="loss-label">Copy-paste giữa các ứng dụng</span>
+            <span class="loss-val red">~2 giờ</span>
+          </div>
+          <div class="loss-row">
+            <span class="loss-label">Làm thủ công việc AI có thể tự làm</span>
+            <span class="loss-val red">~5 giờ</span>
+          </div>
+          <div class="loss-row">
+            <span class="loss-label">Tạo báo cáo, tóm tắt, slide</span>
+            <span class="loss-val red">~3 giờ</span>
+          </div>
+          <div class="loss-total">
+            <span class="loss-total-label">Tổng thời gian lãng phí / tuần</span>
+            <span class="loss-total-num">~11 giờ</span>
+          </div>
+          <div style="margin-top:16px; padding:14px; background:rgba(78,203,113,0.06); border:1px solid rgba(78,203,113,0.15); border-radius:8px;">
+            <div style="font-size:12px; color:#4ecb71; font-weight:700; margin-bottom:4px;">✓ Với Co-work đúng cách:</div>
+            <div style="font-size:12px; color:var(--muted);">Toàn bộ 11 giờ đó được thu hồi — mỗi tuần, mãi mãi.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHAT YOU GET ══ -->
+<section class="features">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag-pill tag-gold">Nội Dung eBook</div>
+      <h2>9 Chương.<br>4 Siêu Năng Lực.<br><span class="g">1 Hệ Thống Hoàn Chỉnh.</span></h2>
+      <p>Không phải tips lẻ tẻ. Đây là blueprint đầy đủ để biến Claude Co-work thành AI employee thực sự của bạn.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feat-card reveal reveal-delay-1">
+        <div class="feat-num">01 / 09</div>
+        <span class="feat-icon">🤖</span>
+        <h3>Claude Co-work Là Gì?</h3>
+        <p>Kiến trúc toàn diện, cách 4 thành phần cốt lõi hoạt động cùng nhau và tại sao 90% đang dùng sai.</p>
+        <div class="feat-tag">Nền tảng</div>
+      </div>
+      <div class="feat-card reveal reveal-delay-2">
+        <div class="feat-num">02 / 09</div>
+        <span class="feat-icon">⚡</span>
+        <h3>Cơ Bản vs Nâng Cao</h3>
+        <p>So sánh trực quan giữa người dùng 10% và 100% — và con đường chính xác để vượt ranh giới đó.</p>
+        <div class="feat-tag">So sánh</div>
+      </div>
+      <div class="feat-card reveal reveal-delay-3">
+        <div class="feat-num">03 / 09</div>
+        <span class="feat-icon">📋</span>
+        <h3>Tệp Claude MD</h3>
+        <p>6 yếu tố bắt buộc trong tệp nhận dạng. Claude sẽ biết bạn là ai, không cần giải thích lại bao giờ nữa.</p>
+        <div class="feat-tag">Siêu năng lực #1</div>
+      </div>
+      <div class="feat-card reveal reveal-delay-1">
+        <div class="feat-num">04 / 09</div>
+        <span class="feat-icon">🎯</span>
+        <h3>Skills — Dạy Một Lần</h3>
+        <p>Cách tạo, cài đặt và quản lý skills. Một từ khóa kích hoạt toàn bộ quy trình phức tạp.</p>
+        <div class="feat-tag">Siêu năng lực #2</div>
+      </div>
+      <div class="feat-card reveal reveal-delay-2">
+        <div class="feat-num">05 / 09</div>
+        <span class="feat-icon">🔌</span>
+        <h3>Connectors</h3>
+        <p>Kết nối 38+ ứng dụng native + hack Zapier MCP để truy cập 8,000+ apps. Claude có chìa khóa văn phòng của bạn.</p>
+        <div class="feat-tag">Siêu năng lực #3</div>
+      </div>
+      <div class="feat-card reveal reveal-delay-3">
+        <div class="feat-num">06–09</div>
+        <span class="feat-icon">⏰</span>
+        <h3>Scheduled Tasks + 7 Skills + System</h3>
+        <p>Tự động hóa hoàn toàn, 7 skills thiết yếu tôi dùng mỗi ngày, so sánh Co-work vs Code, và sơ đồ hệ thống toàn diện.</p>
+        <div class="feat-tag">Siêu năng lực #4 + Tổng kết</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 7 SKILLS ══ -->
+<section class="skills-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag-pill tag-teal">7 Skills Thiết Yếu</div>
+      <h2>Những Skills Tôi Không Thể<br><em>Sống Thiếu Mỗi Ngày</em></h2>
+      <p>Tất cả đều được bao gồm trong eBook — kèm hướng dẫn cài đặt từng bước và template để bạn tải ngay.</p>
+    </div>
+
+    <div class="skills-grid reveal">
+      <div class="skill-row">
+        <div class="skill-num-big">01</div>
+        <div class="skill-body">
+          <h4>☀️ Morning Briefing</h4>
+          <p>Tự động quét lịch, email, AI news và tạo dashboard HTML đẹp trước khi bạn mở máy.</p>
+          <span class="skill-keyword">morning briefing</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-num-big">02</div>
+        <div class="skill-body">
+          <h4>🔍 Research Assistant</h4>
+          <p>Từ bất kỳ chủ đề nào → tài liệu nghiên cứu có cấu trúc với nguồn trích dẫn đầy đủ.</p>
+          <span class="skill-keyword">research assistant</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-num-big">03</div>
+        <div class="skill-body">
+          <h4>📋 Meeting → Action Items</h4>
+          <p>Dán transcript → nhận ngay tóm tắt, danh sách việc cần làm và deadline cụ thể.</p>
+          <span class="skill-keyword">meeting notes</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-num-big">04</div>
+        <div class="skill-body">
+          <h4>🎞️ Slide Deck Generator</h4>
+          <p>Từ một câu → bài trình bày chuyên nghiệp trong 30 giây. Tiết kiệm 3 giờ/lần.</p>
+          <span class="skill-keyword">slide deck generator</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-num-big">05</div>
+        <div class="skill-body">
+          <h4>🖼️ Visual Explainer</h4>
+          <p>Trang web tương tác giải thích bất kỳ khái niệm phức tạp nào — kiến trúc, quy trình, dữ liệu.</p>
+          <span class="skill-keyword">visual explainer</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-num-big">06</div>
+        <div class="skill-body">
+          <h4>📐 Diagram Generator</h4>
+          <p>Mô tả bất kỳ thứ gì → sơ đồ Excalidraw chuyên nghiệp, nhập trực tiếp.</p>
+          <span class="skill-keyword">diagram generator</span>
+        </div>
+      </div>
+      <div class="skill-row" style="grid-column: 1 / -1;">
+        <div class="skill-num-big">07</div>
+        <div class="skill-body">
+          <h4>🛠️ Skill Creator — Tạo Skill Cho Nghề Của Bạn</h4>
+          <p>Skill tạo ra skill. Bạn mô tả quy trình → Claude đóng gói thành skill hoàn chỉnh, phù hợp bất kỳ nghề nghiệp nào — giáo viên, môi giới, designer, freelancer...</p>
+          <span class="skill-keyword">skill creator</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BEFORE / AFTER ══ -->
+<section class="transform">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag-pill tag-sky">Trước & Sau</div>
+      <h2>Cuộc Đời Của Bạn<br><em>Trước Và Sau</em> eBook Này</h2>
+    </div>
+
+    <div class="transform-grid reveal">
+      <div class="before-col">
+        <div class="col-label">Trước khi đọc eBook</div>
+        <div class="transform-item">
+          <span class="t-icon">😤</span>
+          <div>
+            <h5>Bắt đầu lại từ đầu mỗi ngày</h5>
+            <p>Claude không nhớ gì. Bạn phải giải thích lại bối cảnh, giọng điệu, mọi thứ.</p>
+          </div>
+        </div>
+        <div class="transform-item">
+          <span class="t-icon">📋</span>
+          <div>
+            <h5>15 tab mở, copy-paste liên tục</h5>
+            <p>Email ở đây, lịch ở kia, Slack chỗ khác. Thủ công 100%.</p>
+          </div>
+        </div>
+        <div class="transform-item">
+          <span class="t-icon">⏱️</span>
+          <div>
+            <h5>3 giờ cho một bài trình bày</h5>
+            <p>Mỗi slide là công sức thủ công. Mỗi sơ đồ là cả buổi chiều.</p>
+          </div>
+        </div>
+        <div class="transform-item">
+          <span class="t-icon">😴</span>
+          <div>
+            <h5>Claude nghỉ khi bạn nghỉ</h5>
+            <p>Ngoài giờ làm = không có gì được thực hiện.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="after-col">
+        <div class="col-label">Sau khi đọc eBook</div>
+        <div class="transform-item">
+          <span class="t-icon">🧠</span>
+          <div>
+            <h5>Claude biết bạn mỗi ngày</h5>
+            <p>Tệp Claude MD đọc tự động. Không giải thích, không lặp lại.</p>
+          </div>
+        </div>
+        <div class="transform-item">
+          <span class="t-icon">🔌</span>
+          <div>
+            <h5>Tất cả apps kết nối thành một</h5>
+            <p>Claude đọc email, lịch, Drive trực tiếp. Bạn chỉ nhìn kết quả.</p>
+          </div>
+        </div>
+        <div class="transform-item">
+          <span class="t-icon">⚡</span>
+          <div>
+            <h5>30 giây cho một bài trình bày</h5>
+            <p>Một câu lệnh. Slide đẹp với animation xuất hiện ngay lập tức.</p>
+          </div>
+        </div>
+        <div class="transform-item">
+          <span class="t-icon">🚀</span>
+          <div>
+            <h5>Claude làm việc khi bạn ngủ</h5>
+            <p>7am: Morning brief trong Slack. 6pm: Wrap-up tự động. 24/7.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="testimonials">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag-pill tag-gold">Phản Hồi Độc Giả</div>
+      <h2>Họ Đã <em>Thay Đổi Hoàn Toàn</em><br>Cách Làm Việc</h2>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Tôi đã dùng Claude hàng ngày nhưng chưa bao giờ nghĩ nó có thể làm được nhiều thế. Morning briefing chạy lúc 7am, tôi thức dậy đã có tất cả trong Slack. Thực sự thay đổi cuộc chơi."</div>
+        <div class="testi-author">
+          <div class="author-avatar" style="background:rgba(232,81,42,0.15);">👩‍💼</div>
+          <div>
+            <div class="author-name">Nguyễn Lan Anh</div>
+            <div class="author-role">Marketing Manager · TP.HCM</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Phần Zapier MCP là thứ tôi cần nhất. Kết nối được với hệ thống CRM của công ty mà không cần connector native. Skill creator giúp tôi tự tạo workflow cho nghề môi giới BĐS của mình."</div>
+        <div class="testi-author">
+          <div class="author-avatar" style="background:rgba(212,168,67,0.15);">🏢</div>
+          <div>
+            <div class="author-name">Trần Thành Đạt</div>
+            <div class="author-role">Real Estate Agent · Hà Nội</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-3">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Tôi là giáo viên. Skill Creator giúp tôi tạo skill soạn giáo án tự động trong 10 phút. Mỗi tuần tiết kiệm cả ngày làm việc. Đây là khoản đầu tư tốt nhất trong năm."</div>
+        <div class="testi-author">
+          <div class="author-avatar" style="background:rgba(42,184,168,0.15);">👨‍🏫</div>
+          <div>
+            <div class="author-name">Lê Minh Hoàng</div>
+            <div class="author-role">Giáo viên THPT · Đà Nẵng</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ══ -->
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag-pill tag-flame">Chọn Gói Của Bạn</div>
+      <h2>Đầu Tư Một Lần,<br><span class="g">Tiết Kiệm Mãi Mãi</span></h2>
+      <p>Một tuần tiết kiệm 11 giờ làm việc. Bạn muốn bắt đầu hôm nay chứ?</p>
+    </div>
+
+    <div class="pricing-cards">
+      <!-- Basic -->
+      <div class="pricing-card reveal reveal-delay-1">
+        <div class="plan-name">Cơ Bản</div>
+        <div class="plan-price"><sup>₫</sup>199<span class="period">.000</span></div>
+        <div class="plan-orig">₫399.000</div>
+        <div class="plan-save">Tiết kiệm 50%</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>eBook PDF đầy đủ 9 chương</li>
+          <li>Tất cả sơ đồ trực quan</li>
+          <li>Hướng dẫn cài đặt từng bước</li>
+          <li class="muted">Không bao gồm template skills</li>
+          <li class="muted">Không bao gồm cộng đồng</li>
+          <li class="muted">Không có hỗ trợ trực tiếp</li>
+        </ul>
+        <a href="https://bai-tap-2-claude.vercel.app/?plan=basic" class="btn-plan btn-plan-outline">Tải eBook →</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="pricing-card featured reveal reveal-delay-2">
+        <div class="featured-badge">🔥 Phổ biến nhất</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price"><sup>₫</sup>299<span class="period">.000</span></div>
+        <div class="plan-orig">₫699.000</div>
+        <div class="plan-save">Tiết kiệm 57%</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>eBook PDF đầy đủ 9 chương</li>
+          <li>Tất cả sơ đồ trực quan</li>
+          <li>Hướng dẫn cài đặt từng bước</li>
+          <li><strong>7 template skills sẵn dùng</strong></li>
+          <li><strong>Tệp Claude MD mẫu</strong></li>
+          <li><strong>Cộng đồng hỗ trợ 30 ngày</strong></li>
+        </ul>
+        <a href="https://bai-tap-2-claude.vercel.app/?plan=pro" class="btn-plan btn-plan-primary">Mua Pro Ngay →</a>
+      </div>
+
+      <!-- Team -->
+      <div class="pricing-card reveal reveal-delay-3">
+        <div class="plan-name">Team</div>
+        <div class="plan-price"><sup>₫</sup>799<span class="period">.000</span></div>
+        <div class="plan-orig">₫1.499.000</div>
+        <div class="plan-save">Tiết kiệm 47%</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>Tất cả quyền lợi gói Pro</li>
+          <li><strong>Dùng cho 5 thành viên team</strong></li>
+          <li><strong>Buổi workshop trực tuyến 90 phút</strong></li>
+          <li><strong>Q&A trực tiếp với tác giả</strong></li>
+          <li><strong>Template cho 10+ ngành nghề</strong></li>
+          <li><strong>Hỗ trợ ưu tiên 60 ngày</strong></li>
+        </ul>
+        <a href="https://bai-tap-2-claude.vercel.app/?plan=team" class="btn-plan btn-plan-outline">Liên hệ Team →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="tag-pill tag-sky">Câu Hỏi Thường Gặp</div>
+      <h2>Câu Hỏi <em>Bạn Đang</em> Có</h2>
+    </div>
+
+    <div class="faq-grid wrap-narrow" style="max-width:100%">
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Tôi cần trả thêm phí cho Claude Co-work không?</span>
+          <span class="faq-chevron">▾</span>
+        </div>
+        <div class="faq-a">Claude Co-work là tính năng miễn phí trong ứng dụng desktop của Claude (miễn phí tải về). Tuy nhiên, để dùng đầy đủ tính năng, bạn cần tài khoản Claude Pro (~$20/tháng). eBook này dạy bạn khai thác tối đa khoản đầu tư đó.</div>
+      </div>
+
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">eBook có phù hợp với người không biết lập trình không?</span>
+          <span class="faq-chevron">▾</span>
+        </div>
+        <div class="faq-a">Hoàn toàn phù hợp! Claude Co-work được thiết kế cho người không cần kỹ thuật. Tất cả các bước trong eBook đều có hình ảnh minh họa và không yêu cầu bất kỳ kiến thức lập trình nào. Nếu bạn biết dùng smartphone, bạn có thể làm được.</div>
+      </div>
+
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Tôi nhận được file gì sau khi mua?</span>
+          <span class="faq-chevron">▾</span>
+        </div>
+        <div class="faq-a">Gói Pro bao gồm: (1) eBook PDF 9 chương đầy đủ, (2) 7 file skill template (.zip) sẵn sàng upload, (3) Template tệp Claude MD mẫu, (4) Checklist thiết lập từng bước. Tất cả gửi qua email ngay sau thanh toán.</div>
+      </div>
+
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Chính sách hoàn tiền như thế nào?</span>
+          <span class="faq-chevron">▾</span>
+        </div>
+        <div class="faq-a">Bảo đảm hoàn tiền 100% trong vòng 30 ngày, không hỏi lý do. Nếu bạn làm theo hướng dẫn mà không thấy kết quả, gửi email cho chúng tôi và bạn sẽ được hoàn toàn bộ số tiền đã trả.</div>
+      </div>
+
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Sự khác biệt giữa Co-work và Claude Code là gì?</span>
+          <span class="faq-chevron">▾</span>
+        </div>
+        <div class="faq-a">Claude Code chạy trong terminal, chủ yếu dành cho nhà phát triển muốn viết và deploy code. Claude Co-work là giao diện đồ họa dễ dùng, phù hợp cho mọi người — kết nối apps, tự động hóa workflow, không cần biết lập trình. eBook có chương so sánh chi tiết.</div>
+      </div>
+
+      <div class="faq-item reveal" onclick="toggleFaq(this)">
+        <div class="faq-q">
+          <span class="faq-q-text">Nội dung có được cập nhật khi Claude thay đổi không?</span>
+          <span class="faq-chevron">▾</span>
+        </div>
+        <div class="faq-a">Có. Tất cả người mua nhận được cập nhật miễn phí khi có phiên bản mới của eBook. Claude Co-work đang phát triển nhanh và chúng tôi cam kết cập nhật nội dung theo các tính năng mới.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GUARANTEE ══ -->
+<section class="guarantee-sec">
+  <div class="wrap">
+    <div class="guarantee-inner reveal">
+      <div class="guarantee-badge"><span>🛡️</span></div>
+      <div class="guarantee-body">
+        <h3>Bảo Đảm Hoàn Tiền 30 Ngày</h3>
+        <p>Nếu bạn đọc eBook, làm theo hướng dẫn, và không thấy Claude Co-work tiết kiệm được ít nhất <strong>5 giờ mỗi tuần</strong> cho bạn — chúng tôi hoàn tiền 100%, không câu hỏi, không điều kiện. Rủi ro hoàn toàn từ phía chúng tôi, không phải bạn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section class="final-cta">
+  <div class="final-cta-inner wrap-narrow">
+    <div class="tag-pill tag-flame" style="display:inline-flex; margin-bottom:16px;">⏳ Ưu đãi có hạn</div>
+
+    <div class="countdown-row reveal">
+      <div class="countdown-box">
+        <div class="countdown-num" id="cd-h">08</div>
+        <div class="countdown-label">Giờ</div>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-box">
+        <div class="countdown-num" id="cd-m">43</div>
+        <div class="countdown-label">Phút</div>
+      </div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-box">
+        <div class="countdown-num" id="cd-s">27</div>
+        <div class="countdown-label">Giây</div>
+      </div>
+    </div>
+
+    <h2 class="final-h reveal">
+      Bắt Đầu Hành Trình<br><em>Từ 10% Lên</em> <span class="g">100%</span>
+    </h2>
+
+    <p class="final-sub reveal">Mỗi tuần bạn chờ đợi = thêm 11 giờ bị lãng phí. Hôm nay là ngày tốt nhất để bắt đầu. Ngày tốt thứ hai là ngày mai.</p>
+
+    <div class="final-actions reveal">
+      <a href="https://bai-tap-2-claude.vercel.app/?plan=pro" class="btn-final">
+        🚀 Mua eBook Pro — 299.000₫
+        <span>→</span>
+      </a>
+      <div class="final-note">🛡️ Bảo đảm hoàn tiền 30 ngày · Nhận ngay qua email · Thanh toán an toàn</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-logo">Claude <span>Co-work</span> Mastery</div>
+  <div class="footer-copy">© 2025 · Tất cả quyền được bảo lưu</div>
+  <div class="footer-links">
+    <a href="#">Điều khoản</a>
+    <a href="#">Bảo mật</a>
+    <a href="#">Liên hệ</a>
+    <a href="#">Hoàn tiền</a>
+  </div>
+</footer>
+
+<script>
+/* ── PROGRESS BAR ── */
+window.addEventListener('scroll', () => {
+  const d = document.documentElement;
+  const pct = (d.scrollTop / (d.scrollHeight - d.clientHeight)) * 100;
+  document.getElementById('progress').style.width = pct + '%';
+});
+
+/* ── TOPBAR SHRINK ── */
+window.addEventListener('scroll', () => {
+  const tb = document.getElementById('topbar');
+  tb.style.padding = window.scrollY > 60 ? '8px 40px' : '12px 40px';
+});
+
+/* ── REVEAL ON SCROLL ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── FAQ TOGGLE ── */
+function toggleFaq(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
+}
+
+/* ── COUNTDOWN ── */
+(function() {
+  // Set target to end of today (midnight)
+  const now = new Date();
+  const target = new Date(now);
+  target.setHours(23, 59, 59, 999);
+
+  function pad(n) { return n.toString().padStart(2, '0'); }
+
+  function tick() {
+    const diff = target - new Date();
+    if (diff <= 0) {
+      document.getElementById('cd-h').textContent = '00';
+      document.getElementById('cd-m').textContent = '00';
+      document.getElementById('cd-s').textContent = '00';
+      return;
+    }
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-h').textContent = pad(h);
+    document.getElementById('cd-m').textContent = pad(m);
+    document.getElementById('cd-s').textContent = pad(s);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+
+/* ── SMOOTH ANCHOR ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
