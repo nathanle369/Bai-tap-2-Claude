@@ -1000,7 +1000,10 @@ body {
 <div class="shell active" id="checkout-shell">
 
   <header class="topbar">
-    <a href="#" class="logo">Claude <span>Co-work</span> Mastery</a>
+    <a href="https://bai-tap-2-claude.vercel.app" class="logo" style="display:flex;align-items:center;gap:10px;">
+      <span style="font-size:12px;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400;">←</span>
+      Claude <span>Co-work</span> Mastery
+    </a>
     <div class="topbar-secure">
       <span class="dot"></span>
       Kết nối an toàn SSL · Thanh toán bảo mật
@@ -1371,7 +1374,7 @@ body {
 ══════════════════════════════════════ -->
 <div id="success-shell">
   <header class="topbar">
-    <a href="#" class="logo">Claude <span>Co-work</span> Mastery</a>
+    <a href="https://bai-tap-2-claude.vercel.app" class="logo">Claude <span>Co-work</span> Mastery</a>
     <div class="topbar-secure">
       <span class="dot"></span>
       Giao dịch thành công
@@ -1421,7 +1424,7 @@ body {
       <h4>📥 Tải xuống của bạn</h4>
       <p>File sẵn sàng — nhấp để tải xuống ngay</p>
 
-      <a class="download-file" onclick="simulateDownload(this,'ebook')" href="#" id="dl-ebook">
+      <a class="download-file" onclick="simulateDownload(event,this,'ebook')" href="#" id="dl-ebook">
         <div class="file-icon">
           📗
           <span class="ext">PDF</span>
@@ -1434,7 +1437,7 @@ body {
         <div class="file-dl">⬇</div>
       </a>
 
-      <a class="download-file" id="dl-skills" onclick="simulateDownload(this,'skills')" href="#">
+      <a class="download-file" id="dl-skills" onclick="simulateDownload(event,this,'skills')" href="#">
         <div class="file-icon">
           ⚡
           <span class="ext">ZIP</span>
@@ -1447,7 +1450,7 @@ body {
         <div class="file-dl">⬇</div>
       </a>
 
-      <a class="download-file" id="dl-md" onclick="simulateDownload(this,'md')" href="#">
+      <a class="download-file" id="dl-md" onclick="simulateDownload(event,this,'md')" href="#">
         <div class="file-icon">
           📋
           <span class="ext">MD</span>
@@ -1463,7 +1466,7 @@ body {
 
     <!-- Basic plan only shows ebook -->
 
-    <a href="#" class="btn-done" onclick="location.reload()">
+    <a href="https://bai-tap-2-claude.vercel.app" class="btn-done">
       ← Quay lại trang chủ
     </a>
   </div>
@@ -1891,9 +1894,29 @@ function showSuccess() {
 }
 
 /* ══════════════════════════════════════
-   DOWNLOAD SIMULATION
+   DOWNLOAD — works in demo & live
 ══════════════════════════════════════ */
-function simulateDownload(el, fileId) {
+
+// ── File URL map ──
+// Thay các URL này bằng link thật khi bạn có host riêng.
+// Hiện tại trỏ thẳng đến GitHub raw — hoạt động ngay, không cần backend.
+const FILE_URLS = {
+  ebook:  'https://github.com/nathanle369/Bai-tap-2-Claude/raw/main/claude-cowork-ebook.pdf',
+  skills: 'https://github.com/nathanle369/Bai-tap-2-Claude/raw/main/claude-cowork-ebook.pdf', // thay bằng link skills thật
+  md:     'https://github.com/nathanle369/Bai-tap-2-Claude/raw/main/claude-cowork-ebook.pdf', // thay bằng link MD thật
+};
+
+const FILE_NAMES = {
+  ebook:  'Claude-Co-work-Mastery.pdf',
+  skills: '7-Skills-Pack.zip',
+  md:     'claude-md-template.md',
+};
+
+function simulateDownload(evt, el, fileId) {
+  // Ngăn <a href="#"> scroll lên đầu trang
+  if (evt) evt.preventDefault();
+
+  // Nếu đang download rồi thì bỏ qua
   if (el.dataset.downloading === 'true') return;
   el.dataset.downloading = 'true';
 
@@ -1901,39 +1924,41 @@ function simulateDownload(el, fileId) {
   const progBar  = document.getElementById('db-' + fileId);
   const dlIcon   = el.querySelector('.file-dl');
 
+  // Hiện progress bar
   progWrap.classList.add('show');
   dlIcon.textContent = '⏳';
 
+  // Animate 0→100%
   let pct = 0;
   const ticker = setInterval(() => {
-    pct += Math.random() * 18 + 5;
+    pct += Math.random() * 20 + 8;
     if (pct >= 100) {
       pct = 100;
       clearInterval(ticker);
+
+      // UI: done
       dlIcon.textContent = '✓';
       dlIcon.style.background = 'var(--green)';
       dlIcon.style.color = '#fff';
       el.dataset.downloading = 'false';
 
-      // In production: trigger real file download
-      // window.location.href = STATE.vcbConfig.pdfUrl || '/downloads/' + fileId + '.pdf';
+      // Lấy URL thật (ưu tiên Live config nếu có, fallback về FILE_URLS)
+      const url = (STATE.vcbConfig && STATE.vcbConfig.pdfUrl && fileId === 'ebook')
+        ? STATE.vcbConfig.pdfUrl
+        : FILE_URLS[fileId];
 
-      // Demo: show alert
-      const names = { ebook:'Claude Co-work Mastery.pdf', skills:'7-Skills-Pack.zip', md:'claude-md-template.md' };
-      setTimeout(() => {
-        // Simulate browser download trigger
-        const a = document.createElement('a');
-        a.href = 'https://github.com/nathanle369/Bai-tap-2-Claude/raw/main/claude-cowork-ebook.pdf';
-        a.download = names[fileId] || fileId;
-        // In production: a.href = actualFileUrl
-        console.log('[Download]', names[fileId], '— In production, replace # with actual secure URL');
-      }, 300);
+      // Trigger download
+      const a = document.createElement('a');
+      a.href     = url;
+      a.download = FILE_NAMES[fileId];
+      a.target   = '_blank';        // mở tab mới nếu browser block download
+      a.rel      = 'noopener';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => document.body.removeChild(a), 500);
     }
     progBar.style.width = pct + '%';
-  }, 200);
-
-  // Prevent default link behavior in demo
-  return false;
+  }, 150);
 }
 
 /* ══════════════════════════════════════
@@ -1971,8 +1996,33 @@ document.head.appendChild(style);
 ══════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
   updateQR();
-  // Default select Pro plan visually
-  document.querySelector('[data-plan="pro"]').classList.add('selected');
+
+  // ── Auto-select plan from URL param ──
+  // e.g. checkout.html?plan=pro  or  ?plan=basic  or  ?plan=team
+  const urlPlan = new URLSearchParams(window.location.search).get('plan');
+  if (urlPlan && ['basic','pro','team'].includes(urlPlan)) {
+    const targetEl = document.querySelector(`[data-plan="${urlPlan}"]`);
+    if (targetEl) {
+      document.querySelectorAll('.plan-option').forEach(p => p.classList.remove('selected'));
+      targetEl.classList.add('selected');
+      const info = PLANS[urlPlan];
+      STATE.selectedPlan  = urlPlan;
+      STATE.selectedPrice = info.price;
+      document.getElementById('summary-plan-label').textContent = info.label;
+      document.getElementById('sum-orig').textContent     = fmt(info.orig);
+      const disc    = info.orig - info.price;
+      const discPct = Math.round(disc / info.orig * 100);
+      document.getElementById('sum-discount').textContent = '-' + fmt(disc);
+      document.getElementById('sum-total').textContent    = fmt(info.price);
+      document.querySelector('.price-row:nth-child(2) span:first-child').textContent = `Giảm giá (${discPct}%)`;
+      document.getElementById('card-price-display').textContent = fmt(info.price);
+      document.getElementById('qr-price-display').textContent   = fmt(info.price);
+      updateQR();
+    }
+  } else {
+    // Default: Pro
+    document.querySelector('[data-plan="pro"]').classList.add('selected');
+  }
 });
 </script>
 
