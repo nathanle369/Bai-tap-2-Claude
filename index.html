@@ -1923,7 +1923,7 @@ function simulateDownload(el, fileId) {
       setTimeout(() => {
         // Simulate browser download trigger
         const a = document.createElement('a');
-        a.href = '#';
+        a.href = 'https://github.com/nathanle369/Bai-tap-2-Claude/raw/main/claude-cowork-ebook.pdf';
         a.download = names[fileId] || fileId;
         // In production: a.href = actualFileUrl
         console.log('[Download]', names[fileId], '— In production, replace # with actual secure URL');
